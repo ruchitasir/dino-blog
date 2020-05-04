@@ -8,6 +8,11 @@ function App(props) {
   let formattedComments = props.post.comments.map((c,i)=>{
     return <Comment text={c} key={i}/>
   })
+  let commentsLoop =[]
+    for(let i=0;i<props.post.comments.length;i++){
+      commentsLoop.push(<Comment text={props.post.comments[i]} />)
+    }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -28,8 +33,12 @@ function App(props) {
        
         <hr/>
 
-        <h2>Comments as a component with loop:</h2>
+        <h2>Comments as a component with map iterator:</h2>
           {formattedComments}
+
+        <hr/>
+        <h2>Comments as a component with for loop:</h2>
+          {commentsLoop}
 
     </div>
   );
