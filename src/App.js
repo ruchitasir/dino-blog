@@ -16,9 +16,17 @@ function App(props) {
       commentsLoop.push(<Comment text={props.post.comments[i]} />)
     }
   const changeBody=()=>{
-   // body = prompt("What should the new body be?");
+     //body = prompt("What should the new body be?");
       body = document.getElementById('bodyId').value
-     setBody(body)
+      if(!body)
+      {
+        setBody(DEFAULT_BODY)
+      }
+      else{
+
+        setBody(body)
+      }
+     
   }
 
   return (
