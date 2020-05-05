@@ -1,0 +1,31 @@
+import React, { useState } from 'react';
+import Comment from './Comment'
+import logo from './logo.svg';
+import './App.css';
+function App(props) {
+  const DEFAULT_BODY = props.post.body
+  let [body, setBody] = useState(DEFAULT_BODY)
+  const changeBody = (e) => {
+    e.preventDefault()
+    setBody(document.getElementById('bodyText').value)
+  }
+  let formattedComments = props.post.comments.map((c, i) => {
+    return <Comment text={c} key={i} />
+  })
+  return (
+    <div className="App">
+        <h1>
+          {props.post.title}
+        </h1>
+        <h2> By: {props.post.author} </h2>
+        <p>{body}</p>
+        <form>
+          <input type="text" id="bodyText"/>
+          <input type="submit" onClick={changeBody} value="edit body"/>
+        </form>
+        <p><strong>Comments</strong></p>
+        {formattedComments}
+    </div>
+  );
+}
+export default App;
